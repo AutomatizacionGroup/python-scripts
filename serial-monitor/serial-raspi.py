@@ -3,7 +3,7 @@ from serial import Serial
 import time
 import paho.mqtt.client as mqtt
 
-port = 'COM3'
+port = '/dev/ttyUSB0'
 baud_rate = 115200
 
 try:
