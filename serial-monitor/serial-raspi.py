@@ -6,10 +6,13 @@ import paho.mqtt.client as mqtt
 port = '/dev/ttyUSB0'
 baud_rate = 115200
 
-client = mqtt.Client()
-client.connect("loacalhost", 1883, 60)
-client.loop_start()
-mqtt = True
+try:
+    client = mqtt.Client()
+    client.connect("loacalhost", 1883, 60)
+    client.loop_start()
+    mqtt = True
+except:
+    mqtt = False
 
 if __name__ == '__main__':
     #inicia Serial
@@ -24,7 +27,7 @@ if __name__ == '__main__':
         # Espera hasta que el serial reciba informacion
         if ser.in_waiting > 0:
             # Abre archivo Log
-            log = open('logs/' + date + '.log', 'a')
+            log = open(date + '.log', 'a')
 
             # Agrega hora
             line = time.strftime("%H:%M:%S") + ' | '
