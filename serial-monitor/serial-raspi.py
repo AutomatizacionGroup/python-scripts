@@ -6,13 +6,10 @@ import paho.mqtt.client as mqtt
 port = '/dev/ttyUSB0'
 baud_rate = 115200
 
-try:
-    client = mqtt.Client()
-    client.connect("loacalhost", 1883, 60)
-    client.loop_start()
-    mqtt = True
-except:
-    mqtt = False
+client = mqtt.Client()
+client.connect("loacalhost", 1883, 60)
+client.loop_start()
+mqtt = True
 
 if __name__ == '__main__':
     #inicia Serial
