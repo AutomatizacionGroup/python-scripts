@@ -3,12 +3,12 @@ from serial import Serial
 import time
 import paho.mqtt.client as mqtt
 
-port = '/dev/ttyUSB0'
+port = 'COM3'
 baud_rate = 115200
 
 try:
     client = mqtt.Client()
-    client.connect("loacalhost", 1883, 60)
+    client.connect("localhost", 1883, 60)
     client.loop_start()
     mqtt = True
 except:
@@ -44,7 +44,7 @@ if __name__ == '__main__':
 
             if mqtt:
                 #publica en mqtt
-                mqttc.publish("/serial", line)
+                client.publish("serial/esp32", line)
 
             log.close()
             # Si la fecha inicial no coincide con la nueva fecha tomada
